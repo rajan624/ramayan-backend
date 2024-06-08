@@ -1,4 +1,4 @@
-require("dotenv").config({ path: `.env.development` });
+require("dotenv").config({ path: `.env.production` });
 const app = require("./app");
 const connect = require("./MongoDB/MongoConnection");
 const port = process.env.PORT || 4000;
