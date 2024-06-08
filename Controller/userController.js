@@ -1,8 +1,9 @@
 const User = require("../models/User.model");
 const DEBUG = process.env.DEBUG;
-const logger = require("../Config/Logger")
+const logger = require("../Config/Logger");
 
 const getProfile = async (req, res) => {
+  // #swagger.tags = ['User']
   const userId = req?.user?.id;
   // Retrieve user profile data from the database using the user ID
   if (DEBUG) {
@@ -20,5 +21,5 @@ const getProfile = async (req, res) => {
 };
 
 module.exports = {
-  getProfile
+  getProfile,
 };
