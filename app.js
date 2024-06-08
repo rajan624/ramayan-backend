@@ -5,7 +5,9 @@ const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 const cookieParser = require("cookie-parser");
-
+const authRouter = require("./routes/authRoute")
+const middleware = require("./Middleware/verifyAuthentication");
+const userRoute = require("./routes/userRoute");
 app.disable("x-powered-by");
 const corsOptions = {
   origin: ["http://localhost:3000"], // Replace with your frontend domain
@@ -20,9 +22,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/static", express.static(path.join(__dirname, "Static")));
 
-app.get('/', (req,res)=>{
-  res.send('Hello World');
-  })
-
+app.use("/api/user", authRouter);
+app.use(middleware.Authentication);
+app.use("/api/user", userRoute);
 
 module.exports = app;
