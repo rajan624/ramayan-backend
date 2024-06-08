@@ -5,6 +5,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const DEBUG = process.env.DEBUG;
 
 const login = async (req, res) => {
+   // #swagger.tags = ['Auth']
   const { email, password } = req.body;
   // Validation
   console.log("Login function",JWT_SECRET);
@@ -34,6 +35,7 @@ const login = async (req, res) => {
 };
 
 const signUp = async (req, res) => {
+  // #swagger.tags = ['Auth']
   const { name, email, password} = req.body;
 
   // Validation
