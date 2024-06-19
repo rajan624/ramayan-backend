@@ -1,10 +1,11 @@
 const Chapter = require("../models/Chapter.model");
+const Kand = require("../models/Kand.model");
 const DEBUG = process.env.DEBUG;
 const logger = require("../Config/Logger");
 
 // Get All Chapters
 const getAllChapters = async (req, res) => {
-      // #swagger.tags = ['Chapter']
+  // #swagger.tags = ['Chapter']
   if (DEBUG) {
     console.log("Get All Chapters Function Start");
   }
@@ -19,7 +20,7 @@ const getAllChapters = async (req, res) => {
 
 // Get Chapter by ID
 const getChapterById = async (req, res) => {
-      // #swagger.tags = ['Chapter']
+  // #swagger.tags = ['Chapter']
   const chapterId = req.params.id;
   if (DEBUG) {
     console.log("Get Chapter By ID Function Start");
@@ -38,11 +39,22 @@ const getChapterById = async (req, res) => {
 
 // Create Chapter
 const createChapter = async (req, res) => {
-      // #swagger.tags = ['Chapter']
-  const { title, content, courseId } = req.body;
+  // #swagger.tags = ['Chapter']
+  const { name, kand, easyQuestion, mediumQuestion, hardQuestion } = req.body;
   try {
-    let chapter = new Chapter({ title, content, courseId });
+    let chapter = new Chapter({
+      name,
+      kand,
+      easyQuestion,
+      mediumQuestion,
+      hardQuestion,
+    });
     await chapter.save();
+    await Kand.findByIdAndUpdate(
+      kand,
+      { $push: { Chapter: chapter._id } },
+      { new: true, useFindAndModify: false }
+    );
     res.status(201).json({ msg: "Chapter created successfully", chapter });
   } catch (error) {
     console.log(error);
@@ -52,7 +64,7 @@ const createChapter = async (req, res) => {
 
 // Update Chapter
 const updateChapter = async (req, res) => {
-      // #swagger.tags = ['Chapter']
+  // #swagger.tags = ['Chapter']
   const chapterId = req.params.id;
   try {
     const updatedChapter = await Chapter.findByIdAndUpdate(
@@ -72,7 +84,7 @@ const updateChapter = async (req, res) => {
 
 // Delete Chapter
 const deleteChapter = async (req, res) => {
-      // #swagger.tags = ['Chapter']
+  // #swagger.tags = ['Chapter']
   const chapterId = req.params.id;
   try {
     const deletedChapter = await Chapter.findByIdAndDelete(chapterId);

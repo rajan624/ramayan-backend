@@ -4,7 +4,7 @@ const logger = require("../Config/Logger");
 
 // Get All Kands
 const getAllKands = async (req, res) => {
-      // #swagger.tags = ['Kand']
+  // #swagger.tags = ['Kand']
   if (DEBUG) {
     console.log("Get All Kands Function Start");
   }
@@ -19,7 +19,7 @@ const getAllKands = async (req, res) => {
 
 // Get kand by ID
 const getKandById = async (req, res) => {
-        // #swagger.tags = ['Kand']
+  // #swagger.tags = ['Kand']
   const kandId = req.params.id;
   if (DEBUG) {
     console.log("Get Chapter By ID Function Start");
@@ -38,10 +38,10 @@ const getKandById = async (req, res) => {
 
 // Create kand
 const createKand = async (req, res) => {
-        // #swagger.tags = ['Kand']
-  const { title, content, courseId } = req.body;
+  // #swagger.tags = ['Kand']
+  const { name, kandQuiz, Chapter } = req.body;
   try {
-    let kand = new Kand({ title, content, courseId });
+    let kand = new Kand({ name, kandQuiz, Chapter });
     await kand.save();
     res.status(201).json({ msg: "kand created successfully", kand });
   } catch (error) {
@@ -52,14 +52,12 @@ const createKand = async (req, res) => {
 
 // Update kand
 const updateKand = async (req, res) => {
-        // #swagger.tags = ['Kand']
+  // #swagger.tags = ['Kand']
   const kandId = req.params.id;
   try {
-    const updatedKand = await Kand.findByIdAndUpdate(
-        kandId,
-      req.body,
-      { new: true }
-    );
+    const updatedKand = await Kand.findByIdAndUpdate(kandId, req.body, {
+      new: true,
+    });
     if (!updatedKand) {
       return res.status(404).json({ msg: "Kand not found" });
     }
@@ -72,7 +70,7 @@ const updateKand = async (req, res) => {
 
 // Delete Chapter
 const deleteKand = async (req, res) => {
-        // #swagger.tags = ['Kand']
+  // #swagger.tags = ['Kand']
   const kandId = req.params.id;
   try {
     const deletedKand = await Kand.findByIdAndDelete(kandId);

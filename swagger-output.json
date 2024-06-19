@@ -156,13 +156,19 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": {
+                  "name": {
                     "example": "any"
                   },
-                  "content": {
+                  "kand": {
                     "example": "any"
                   },
-                  "courseId": {
+                  "easyQuestion": {
+                    "example": "any"
+                  },
+                  "mediumQuestion": {
+                    "example": "any"
+                  },
+                  "hardQuestion": {
                     "example": "any"
                   }
                 }
@@ -309,6 +315,9 @@
           "401": {
             "description": "Unauthorized"
           },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -319,13 +328,25 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": {
+                  "question": {
                     "example": "any"
                   },
-                  "content": {
+                  "answer": {
                     "example": "any"
                   },
-                  "courseId": {
+                  "category": {
+                    "example": "any"
+                  },
+                  "description": {
+                    "example": "any"
+                  },
+                  "kand": {
+                    "example": "any"
+                  },
+                  "chapter": {
+                    "example": "any"
+                  },
+                  "option": {
                     "example": "any"
                   }
                 }
@@ -482,13 +503,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": {
+                  "name": {
                     "example": "any"
                   },
-                  "content": {
+                  "kandQuiz": {
                     "example": "any"
                   },
-                  "courseId": {
+                  "Chapter": {
                     "example": "any"
                   }
                 }
