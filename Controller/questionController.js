@@ -6,6 +6,9 @@ const Chapter = require("../models/Chapter.model");
 // Get All Question
 const getAllQuestions = async (req, res) => {
   // #swagger.tags = ['Question']
+   /* #swagger.security = [{
+            "bearerAuth": []
+    }] */
   if (DEBUG) {
     console.log("Get All Question Function Start");
   }
@@ -21,6 +24,9 @@ const getAllQuestions = async (req, res) => {
 // Get Question by ID
 const getQuestionById = async (req, res) => {
   // #swagger.tags = ['Question']
+   /* #swagger.security = [{
+            "bearerAuth": []
+    }] */
   const questionId = req.params.id;
   if (DEBUG) {
     console.log("Get Question By ID Function Start");
@@ -40,12 +46,15 @@ const getQuestionById = async (req, res) => {
 // Create Question
 const createQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
+   /* #swagger.security = [{
+            "bearerAuth": []
+    }] */
   const {
     question,
     answer,
     category,
     description,
-    kand,
+    module,
     chapter,
     option,
     img,
@@ -56,7 +65,7 @@ const createQuestion = async (req, res) => {
       answer,
       category,
       description,
-      kand,
+      module,
       chapter,
       option,
       img,
@@ -96,6 +105,9 @@ const createQuestion = async (req, res) => {
 // Update Question
 const updateQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
+   /* #swagger.security = [{
+            "bearerAuth": []
+    }] */
   const questionId = req.params.id;
   try {
     const updatedQuestion = await Question.findByIdAndUpdate(
@@ -119,6 +131,9 @@ const updateQuestion = async (req, res) => {
 // Delete Question
 const deleteQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
+   /* #swagger.security = [{
+            "bearerAuth": []
+    }] */
   const questionId = req.params.id;
   try {
     const deletedQuestion = await Question.findByIdAndDelete(questionId);

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Chapter = require("./Chapter.model");
-const Kand = require("./Kand.model");
+const Module = require("./Module.model");
 
 const questionSchema = new Schema(
   {
@@ -14,7 +14,7 @@ const questionSchema = new Schema(
     },
     description: { type: String, required: false },
     img: { type: String, required: false },
-    kand: { type: mongoose.Schema.Types.ObjectId, ref: "Kand" },
+    module: { type: mongoose.Schema.Types.ObjectId, ref: "Module" },
     chapter: { type: mongoose.Schema.Types.ObjectId, ref: "Chapter" },
     option: [{ type: String, required: false }],
   },

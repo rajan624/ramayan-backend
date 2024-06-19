@@ -1,9 +1,17 @@
-const swaggerAutogen = require('swagger-autogen')({openapi: '3.0.0'});
+const swaggerAutogen = require("swagger-autogen")({ openapi: "3.0.0" });
 const doc = {
   info: {
     version: "3.1.0", // by default: '1.0.0'
     title: "Ramayana Backend API", // by default: 'REST API'
     description: "", // by default: ''
+  },
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+      },
+    },
   },
   servers: [
     {
