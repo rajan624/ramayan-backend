@@ -40,7 +40,7 @@ const getChapterById = async (req, res) => {
 // Create Chapter
 const createChapter = async (req, res) => {
   // #swagger.tags = ['Chapter']
-  const { name, kand, easyQuestion, mediumQuestion, hardQuestion } = req.body;
+  const { name, kand, easyQuestion, mediumQuestion, hardQuestion,img } = req.body;
   try {
     let chapter = new Chapter({
       name,
@@ -48,6 +48,7 @@ const createChapter = async (req, res) => {
       easyQuestion,
       mediumQuestion,
       hardQuestion,
+      img
     });
     await chapter.save();
     await Kand.findByIdAndUpdate(

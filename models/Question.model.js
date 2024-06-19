@@ -13,6 +13,7 @@ const questionSchema = new Schema(
       required: true,
     },
     description: { type: String, required: false },
+    img: { type: String, required: false },
     kand: { type: mongoose.Schema.Types.ObjectId, ref: "Kand" },
     chapter: { type: mongoose.Schema.Types.ObjectId, ref: "Chapter" },
     option: [{ type: String, required: false }],

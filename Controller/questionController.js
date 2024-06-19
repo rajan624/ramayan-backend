@@ -40,8 +40,16 @@ const getQuestionById = async (req, res) => {
 // Create Question
 const createQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
-  const { question, answer, category, description, kand, chapter, option } =
-    req.body;
+  const {
+    question,
+    answer,
+    category,
+    description,
+    kand,
+    chapter,
+    option,
+    img,
+  } = req.body;
   try {
     let question = new Question({
       question,
@@ -51,6 +59,7 @@ const createQuestion = async (req, res) => {
       kand,
       chapter,
       option,
+      img,
     });
     await question.save();
 

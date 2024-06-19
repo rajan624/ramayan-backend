@@ -6,6 +6,7 @@ const Question = require("./Question.model");
 const chapterSchema = new Schema(
   {
     name: { type: String, required: true },
+    img: { type: String, required: false },
     kand: { type: mongoose.Schema.Types.ObjectId, ref: "Kand" },
     easyQuestion: [{ type: mongoose.Schema.Types.ObjectId, ref: "Question" }],
     mediumQuestion: [{ type: mongoose.Schema.Types.ObjectId, ref: "Question" }],

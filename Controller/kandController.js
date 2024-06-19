@@ -39,7 +39,7 @@ const getKandById = async (req, res) => {
 // Create kand
 const createKand = async (req, res) => {
   // #swagger.tags = ['Kand']
-  const { name, kandQuiz, Chapter } = req.body;
+  const { name, kandQuiz, Chapter,img } = req.body;
   try {
     let kand = new Kand({ name, kandQuiz, Chapter });
     await kand.save();
