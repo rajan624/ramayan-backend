@@ -1,6 +1,7 @@
 const Kand = require("../models/Kand.model");
 const DEBUG = process.env.DEBUG;
 const logger = require("../Config/Logger");
+const Katha = require("../models/Katha.model");
 
 // Get All Kands
 const getAllKands = async (req, res) => {
@@ -39,10 +40,15 @@ const getKandById = async (req, res) => {
 // Create kand
 const createKand = async (req, res) => {
   // #swagger.tags = ['Kand']
-  const { name, kandQuiz, Chapter,img } = req.body;
+  const { name, kandQuiz, katha, Chapter, img } = req.body;
   try {
-    let kand = new Kand({ name, kandQuiz, Chapter });
+    let kand = new Kand({ name, kandQuiz, Chapter, img });
     await kand.save();
+    await Katha.findByIdAndUpdate(
+      katha,
+      { $push: { Kand: kand._id } },
+      { new: true, useFindAndModify: false }
+    );
     res.status(201).json({ msg: "kand created successfully", kand });
   } catch (error) {
     console.log(error);

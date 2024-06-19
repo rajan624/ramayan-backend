@@ -170,6 +170,9 @@
                   },
                   "hardQuestion": {
                     "example": "any"
+                  },
+                  "img": {
+                    "example": "any"
                   }
                 }
               }
@@ -348,6 +351,9 @@
                   },
                   "option": {
                     "example": "any"
+                  },
+                  "img": {
+                    "example": "any"
                   }
                 }
               }
@@ -509,7 +515,13 @@
                   "kandQuiz": {
                     "example": "any"
                   },
+                  "katha": {
+                    "example": "any"
+                  },
                   "Chapter": {
+                    "example": "any"
+                  },
+                  "img": {
                     "example": "any"
                   }
                 }
