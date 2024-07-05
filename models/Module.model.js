@@ -4,7 +4,8 @@ const Category = require("./Category.model");
 
 const moduleSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name_hindi: { type: String, required: true },
+    name_english: { type: String, required: true },
     moduleQuiz: { type: Boolean, default: false },
     img: { type: String, required: false },
     category: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],

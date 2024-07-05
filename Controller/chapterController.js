@@ -6,7 +6,7 @@ const logger = require("../Config/Logger");
 // Get All Chapters
 const getAllChapters = async (req, res) => {
   // #swagger.tags = ['Chapter']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   if (DEBUG) {
@@ -24,7 +24,7 @@ const getAllChapters = async (req, res) => {
 // Get Chapter by ID
 const getChapterById = async (req, res) => {
   // #swagger.tags = ['Chapter']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const chapterId = req.params.id;
@@ -46,14 +46,22 @@ const getChapterById = async (req, res) => {
 // Create Chapter
 const createChapter = async (req, res) => {
   // #swagger.tags = ['Chapter']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
-  const { name, module, easyQuestion, mediumQuestion, hardQuestion, img } =
-    req.body;
+  const {
+    name_english,
+    name_hindi,
+    module,
+    easyQuestion,
+    mediumQuestion,
+    hardQuestion,
+    img,
+  } = req.body;
   try {
     let chapter = new Chapter({
-      name,
+      name_hindi,
+      name_english,
       module,
       easyQuestion,
       mediumQuestion,
@@ -76,7 +84,7 @@ const createChapter = async (req, res) => {
 // Update Chapter
 const updateChapter = async (req, res) => {
   // #swagger.tags = ['Chapter']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const chapterId = req.params.id;
@@ -99,7 +107,7 @@ const updateChapter = async (req, res) => {
 // Delete Chapter
 const deleteChapter = async (req, res) => {
   // #swagger.tags = ['Chapter']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const chapterId = req.params.id;

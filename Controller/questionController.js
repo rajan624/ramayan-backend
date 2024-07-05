@@ -6,7 +6,7 @@ const Chapter = require("../models/Chapter.model");
 // Get All Question
 const getAllQuestions = async (req, res) => {
   // #swagger.tags = ['Question']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   if (DEBUG) {
@@ -24,7 +24,7 @@ const getAllQuestions = async (req, res) => {
 // Get Question by ID
 const getQuestionById = async (req, res) => {
   // #swagger.tags = ['Question']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const questionId = req.params.id;
@@ -46,51 +46,58 @@ const getQuestionById = async (req, res) => {
 // Create Question
 const createQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const {
-    question,
-    answer,
+    question_english,
+    question_hindi,
+    answer_english,
+    answer_hindi,
+    description_english,
+    description_hindi,
     category,
-    description,
     module,
     chapter,
-    option,
+    option_english,
+    option_hindi,
     img,
   } = req.body;
   try {
-    let question = new Question({
-      question,
-      answer,
+    let newQuestion = new Question({
+      question_english,
+      question_hindi,
+      answer_english,
+      answer_hindi,
+      description_english,
+      description_hindi,
       category,
-      description,
       module,
       chapter,
-      option,
+      option_english,
+      option_hindi,
       img,
     });
-    await question.save();
+    await newQuestion.save();
 
     // Find the chapter and update it with the new question reference
     let chapterDoc = await Chapter.findById(chapter);
     if (!chapterDoc) {
-      await Question.findByIdAndDelete(question._id);
+      await Question.findByIdAndDelete(newQuestion._id);
       return res.status(404).json({ msg: "Chapter not found" });
     }
-
     switch (difficulty) {
       case "easy":
-        chapterDoc.easyQuestion.push(question._id);
+        chapterDoc.easyQuestion.push(newQuestion._id);
         break;
       case "medium":
-        chapterDoc.mediumQuestion.push(question._id);
+        chapterDoc.mediumQuestion.push(newQuestion._id);
         break;
       case "hard":
-        chapterDoc.hardQuestion.push(question._id);
+        chapterDoc.hardQuestion.push(newQuestion._id);
         break;
       default:
-        await Question.findByIdAndDelete(question._id);
+        await Question.findByIdAndDelete(newQuestion._id);
         return res.status(400).json({ msg: "Invalid difficulty level" });
     }
 
@@ -105,7 +112,7 @@ const createQuestion = async (req, res) => {
 // Update Question
 const updateQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const questionId = req.params.id;
@@ -131,7 +138,7 @@ const updateQuestion = async (req, res) => {
 // Delete Question
 const deleteQuestion = async (req, res) => {
   // #swagger.tags = ['Question']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const questionId = req.params.id;

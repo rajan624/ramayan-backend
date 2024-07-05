@@ -6,7 +6,7 @@ const Category = require("../models/Category.model");
 // Get All Modules
 const getAllModules = async (req, res) => {
   // #swagger.tags = ['Module']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   if (DEBUG) {
@@ -24,7 +24,7 @@ const getAllModules = async (req, res) => {
 // Get module by ID
 const getModuleById = async (req, res) => {
   // #swagger.tags = ['Module']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const moduleId = req.params.id;
@@ -46,12 +46,19 @@ const getModuleById = async (req, res) => {
 // Create module
 const createModule = async (req, res) => {
   // #swagger.tags = ['Module']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
-  const { name, moduleQuiz, category, Chapter, img } = req.body;
+  const { name_hindi, name_english, moduleQuiz, category, Chapter, img } =
+    req.body;
   try {
-    let module = new Module({ name, moduleQuiz, Chapter, img });
+    let module = new Module({
+      name_english,
+      name_hindi,
+      moduleQuiz,
+      Chapter,
+      img,
+    });
     await module.save();
     await Category.findByIdAndUpdate(
       category,
@@ -68,7 +75,7 @@ const createModule = async (req, res) => {
 // Update module
 const updateModule = async (req, res) => {
   // #swagger.tags = ['Module']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const moduleId = req.params.id;
@@ -89,7 +96,7 @@ const updateModule = async (req, res) => {
 // Delete Module
 const deleteModule = async (req, res) => {
   // #swagger.tags = ['Module']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const ModuleId = req.params.id;

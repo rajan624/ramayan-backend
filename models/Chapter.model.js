@@ -5,7 +5,8 @@ const Question = require("./Question.model");
 
 const chapterSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name_hindi: { type: String, required: true },
+    name_english: { type: String, required: true },
     img: { type: String, required: false },
     module: { type: mongoose.Schema.Types.ObjectId, ref: "Module" },
     easyQuestion: [{ type: mongoose.Schema.Types.ObjectId, ref: "Question" }],

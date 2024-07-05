@@ -45,12 +45,12 @@ const getCategoryById = async (req, res) => {
 // Create category
 const createCategory = async (req, res) => {
   // #swagger.tags = ['Category']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
-  const { name, Kand, img } = req.body;
+  const { name_hindi, name_english, module, img } = req.body;
   try {
-    let category = new Category({ name, Kand, img });
+    let category = new Category({ name_english, name_hindi, module, img });
     await category.save();
     res.status(201).json({ msg: "category created successfully", category });
   } catch (error) {
@@ -62,7 +62,7 @@ const createCategory = async (req, res) => {
 // Update category
 const updateCategory = async (req, res) => {
   // #swagger.tags = ['Category']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const categoryId = req.params.id;
@@ -90,7 +90,7 @@ const updateCategory = async (req, res) => {
 // Delete Category
 const deleteCategory = async (req, res) => {
   // #swagger.tags = ['Category']
-   /* #swagger.security = [{
+  /* #swagger.security = [{
             "bearerAuth": []
     }] */
   const categoryId = req.params.id;

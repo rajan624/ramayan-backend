@@ -75,6 +75,9 @@
                   "name": {
                     "example": "any"
                   },
+                  "gender": {
+                    "example": "any"
+                  },
                   "email": {
                     "example": "any"
                   },
@@ -171,10 +174,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "name_hindi": {
                     "example": "any"
                   },
-                  "Kand": {
+                  "name_english": {
+                    "example": "any"
+                  },
+                  "module": {
                     "example": "any"
                   },
                   "img": {
@@ -359,7 +365,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "name_hindi": {
+                    "example": "any"
+                  },
+                  "name_english": {
                     "example": "any"
                   },
                   "moduleQuiz": {
@@ -553,7 +562,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "name_english": {
+                    "example": "any"
+                  },
+                  "name_hindi": {
                     "example": "any"
                   },
                   "module": {
@@ -753,16 +765,25 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "question": {
+                  "question_english": {
                     "example": "any"
                   },
-                  "answer": {
+                  "question_hindi": {
+                    "example": "any"
+                  },
+                  "answer_english": {
+                    "example": "any"
+                  },
+                  "answer_hindi": {
+                    "example": "any"
+                  },
+                  "description_english": {
+                    "example": "any"
+                  },
+                  "description_hindi": {
                     "example": "any"
                   },
                   "category": {
-                    "example": "any"
-                  },
-                  "description": {
                     "example": "any"
                   },
                   "module": {
@@ -771,7 +792,10 @@
                   "chapter": {
                     "example": "any"
                   },
-                  "option": {
+                  "option_english": {
+                    "example": "any"
+                  },
+                  "option_hindi": {
                     "example": "any"
                   },
                   "img": {

@@ -36,11 +36,11 @@ const login = async (req, res) => {
 
 const signUp = async (req, res) => {
   // #swagger.tags = ['Auth']
-  const { name, email, password} = req.body;
+  const { name,gender, email, password} = req.body;
 
   // Validation
   console.log(req.body);
-  if (!name || !email || !password) {
+  if (!name || !email || !password ||!gender) {
     return res.status(400).json({ msg: "Please enter all feilds" });
   }
 
